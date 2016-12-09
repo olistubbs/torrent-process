@@ -3,19 +3,21 @@ var mv = require('mv');
 var fs = require('fs');
 
 var chokidar = require('chokidar');
-
-var watcher = chokidar.watch('file', {
+var watcher = chokidar.watch('.', {
   ignored: /(^|[\/\\])\../,
   persistent: true
 });
+
+var stream = fs.createWriteStream("/home/downloads/unprocessed/downloads.log");
 
 var log = console.log.bind(console);
 
 watcher
   .on('add', function(file) {
     console.log(`File ${file} has been added`);
-    mv(file, '/home/downloads/finished/Supernatural/', function(e){
-      console.log(e);
+    stream.once('open', function(fd){
+      stream.write(`${file}`);
+      stream.end();
     })
   });
 
