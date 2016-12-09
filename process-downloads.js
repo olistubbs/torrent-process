@@ -16,7 +16,7 @@ watcher
     stream.once('open', function(fd){
       stream.write(file + '\n');
       stream.end();
-    })
+    });
   });
 
 //watcher
