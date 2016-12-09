@@ -10,13 +10,11 @@ var watcher = chokidar.watch('.', {
 
 var stream = fs.createWriteStream("/home/downloads/unprocessed/downloads.log");
 
-var log = console.log.bind(console);
-
 watcher
   .on('add', function(file) {
     console.log(`File ${file} has been added`);
     stream.once('open', function(fd){
-      stream.write(`${file}\n`);
+      stream.write(file + '\n');
       stream.end();
     })
   });
