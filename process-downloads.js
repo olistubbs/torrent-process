@@ -16,7 +16,7 @@ watcher
   .on('add', function(file) {
     console.log(`File ${file} has been added`);
     stream.once('open', function(fd){
-      stream.write(`${file}`);
+      stream.write(`${file}\n`);
       stream.end();
     })
   });
