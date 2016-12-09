@@ -13,11 +13,8 @@ var stream = fs.createWriteStream("/home/downloads/unprocessed/downloads.log");
 watcher
   .on('add', function(file) {
     console.log(`File ${file} has been added`);
-    stream.once('open', function(fd){
-      stream.write(file + '\n');
-      stream.end();
+    stream.write(file + '\n');
     });
-  });
 
 //watcher
 //  .on('add', function(path) { log('File', path, 'has been added'); })
