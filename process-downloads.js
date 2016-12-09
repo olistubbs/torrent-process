@@ -14,7 +14,7 @@ var log = console.log.bind(console);
 watcher
   .on('add', function(file) {
     console.log(`File ${file} has been added`);
-    mv(file '/home/downloads/finished/Supernatural/' function(e){
+    mv(file, '/home/downloads/finished/Supernatural/', function(e){
       console.log(e);
     })
   });
